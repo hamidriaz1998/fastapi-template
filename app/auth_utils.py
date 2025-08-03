@@ -4,7 +4,7 @@ import random
 
 import argon2
 from dotenv import load_dotenv
-from jose import jwt
+import jwt
 
 from app.models.auth.Userotp import UserOTP
 from app.utils import get_expiration_time

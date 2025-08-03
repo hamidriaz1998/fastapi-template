@@ -4,7 +4,7 @@ from fastapi.security import (
     HTTPBearer,
     OAuth2PasswordBearer,  # noqa: F401
 )
-from jose import JWTError, jwt
+import jwt
 from pydantic import EmailStr
 from sqlalchemy import select, update
 from sqlalchemy.orm import Session
@@ -165,7 +165,7 @@ async def get_current_user(
             raise HTTPException(status_code=404, detail="User not found")
         return current_user
 
-    except JWTError:
+    except Exception:
         raise HTTPException(status_code=401, detail="Invalid token")
 
 
